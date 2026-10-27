@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antoni.pl — Hosting Minecraft</title>
+<style>
+:root{color-scheme:dark;--bg:#080d0b;--panel:#111a15;--green:#42f58d;--muted:#9aafa2}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#f3fff6;font-family:Arial,sans-serif}
+header{padding:20px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #20352a}
+.logo{font-size:25px;font-weight:900;color:var(--green)}
+nav a{color:#d8e9dd;text-decoration:none;margin-left:18px}
+main{max-width:1050px;margin:auto;padding:65px 22px}
+.hero{text-align:center;padding:30px 0 50px}
+.tag{color:var(--green);font-weight:bold}
+h1{font-size:clamp(36px,7vw,65px);margin:18px 0}
+p{color:var(--muted);line-height:1.7}
+.btn{display:inline-block;background:var(--green);color:#07110b;padding:14px 22px;border:0;border-radius:9px;font-weight:bold;text-decoration:none;cursor:pointer}
+.secondary{background:#18251d;color:white;border:1px solid #31513d;margin-left:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid #263b2e;border-radius:14px;padding:22px}
+.card h3{color:var(--green)}
+.status{color:#ffda7a;font-size:13px}
+footer{text-align:center;padding:28px;border-top:1px solid #20352a;color:var(--muted)}
+#info{display:none;margin-top:22px;padding:15px;border:1px solid #42f58d;border-radius:10px;color:#caffdc}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">⚡ antoni.pl</div>
+<nav><a href="#funkcje">Funkcje</a><a href="#panel">Panel</a></nav>
+</header>
+<main>
+<section class="hero">
+<div class="tag">MINECRAFT HOSTING • PROJEKT</div>
+<h1>Twój serwer.<br><span style="color:#42f58d">Twoje zasady.</span></h1>
+<p>Twórz serwery Minecraft, zarządzaj plikami i kontroluj świat z jednego panelu.</p>
+<a class="btn" href="#panel">Otwórz panel</a>
+<a class="btn secondary" href="#funkcje">Poznaj funkcje</a>
+<div id="info">To jest wersja demonstracyjna. Prawdziwe serwery i logowanie nie są jeszcze podłączone.</div>
+</section>
+<h2 id="funkcje">Wszystko w jednym miejscu</h2>
+<div class="grid">
+<article class="card"><h3>🎮 Serwery Minecraft</h3><p>Docelowo tworzenie, uruchamianie, zatrzymywanie i restartowanie serwerów.</p></article>
+<article class="card"><h3>⌨️ Konsola</h3><p>Docelowo podgląd logów i wysyłanie poleceń do serwera.</p></article>
+<article class="card"><h3>📁 Menedżer plików</h3><p>Planowane zarządzanie plikami, pluginami, konfiguracją i światem.</p></article>
+<article class="card"><h3>💾 Kopie zapasowe</h3><p>Planowane tworzenie i przywracanie kopii zapasowych.</p></article>
+</div>
+<section id="panel" class="card" style="margin-top:28px">
+<h2>Panel użytkownika</h2>
+<p>Wersja demonstracyjna Antoni.pl</p>
+<p class="status">● Serwery nie są jeszcze podłączone</p>
+<button class="btn" onclick="document.getElementById('info').style.display='block';document.getElementById('info').scrollIntoView({behavior:'smooth'})">Sprawdź panel</button>
+</section>
+</main>
+<footer>© 2026 Antoni.pl • Projekt hostingu Minecraft</footer>
+</body>
+  </html>
+  
