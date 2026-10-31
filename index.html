@@ -1,149 +1,85 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Antoni.pl | Minecraft Hosting</title>
+<title>Antoni.pl — Prywatny hosting Minecraft</title>
 <style>
-:root{color-scheme:dark;--bg:#07100c;--panel:#101d16;--line:#254332;--green:#5cff9c;--muted:#9bb2a3}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#f0fff5;font:15px Arial,sans-serif}
-header{padding:22px 6%;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:24px;font-weight:bold}.logo span{color:var(--green)}
-header small{color:var(--muted)}
-.layout{display:flex;min-height:85vh}
-nav{width:220px;padding:22px 14px;border-right:1px solid var(--line)}
-button{cursor:pointer;font:inherit}
-nav button{display:block;width:100%;text-align:left;padding:13px;margin-bottom:7px;background:transparent;border:0;border-radius:8px;color:#b8cebf}
-nav button:hover,nav button.active{background:#173624;color:var(--green)}
-main{padding:30px;flex:1;min-width:0}
-h1{font-size:30px}h2{font-size:20px}
-p{color:var(--muted);line-height:1.6}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
-.card{padding:20px;background:var(--panel);border:1px solid var(--line);border-radius:12px;margin-bottom:15px}
-.value{font-size:25px;font-weight:bold;color:var(--green);margin-top:15px}
-.action{padding:11px 15px;border:0;border-radius:7px;background:var(--green);color:#052311;font-weight:bold}
-.secondary{padding:10px;border:1px solid var(--line);background:#12251a;color:white;border-radius:7px}
-input,select{padding:12px;background:#07120c;color:white;border:1px solid var(--line);border-radius:7px;max-width:100%}
-.terminal{background:#030805;padding:15px;border-radius:8px;line-height:1.9;overflow-wrap:anywhere}
-.green{color:var(--green)}.notice{padding:14px;background:#211b0d;border:1px solid #705b28;border-radius:8px;color:#f3d58b;margin-bottom:22px}
-[hidden]{display:none!important}
-footer{padding:20px;text-align:center;border-top:1px solid var(--line);color:var(--muted)}
-@media(max-width:650px){.layout{display:block}nav{width:100%;display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--line)}nav button{min-width:max-content;width:auto}main{padding:18px}h1{font-size:25px}}
+:root{color-scheme:dark;--bg:#07110c;--panel:#101e16;--panel2:#14271c;--line:#294735;--green:#63f59b;--muted:#a5b9aa;--red:#ff7777}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#f2fff5;font:15px Arial,sans-serif}
+header{display:flex;justify-content:space-between;align-items:center;padding:18px 5%;border-bottom:1px solid var(--line);background:#0a160f;position:sticky;top:0}
+.logo{font-size:23px;font-weight:800}.logo span{color:var(--green)}header small{color:var(--muted)}
+.layout{display:flex;min-height:calc(100vh - 65px)}nav{width:220px;padding:20px 14px;border-right:1px solid var(--line);flex-shrink:0}
+nav button{display:block;width:100%;padding:13px;margin:0 0 7px;text-align:left;border:0;border-radius:9px;background:transparent;color:#c2d3c7;cursor:pointer}
+nav button.active,nav button:hover{background:#183624;color:var(--green)}
+main{padding:28px;max-width:1200px;width:100%;margin:auto}.topline{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:29px;margin:0 0 8px}h2{font-size:19px;margin-top:0}p,.muted{color:var(--muted);line-height:1.55}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin:20px 0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:18px}
+.stat{font-size:28px;font-weight:800;color:var(--green);margin-top:8px}
+button.primary{background:var(--green);color:#062011;border:0;font-weight:bold}
+button, input,select{font:inherit;border-radius:9px;padding:11px}
+button{cursor:pointer;border:1px solid var(--line);background:var(--panel2);color:#effff3}
+button:disabled{opacity:.4;cursor:not-allowed}
+.primary{padding:12px 16px}
+input,select{width:100%;background:#09150e;color:white;border:1px solid var(--line);margin:6px 0 14px}
+label{display:block;color:#c7d8cb;font-size:14px}
+.badge{display:inline-block;padding:5px 9px;border-radius:20px;background:#173c27;color:var(--green);font-size:12px}
+.server{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}
+.actions{display:flex;gap:8px;flex-wrap:wrap}.notice{padding:13px;border:1px solid #65552c;background:#2b2512;border-radius:10px;color:#f5d98b;margin:16px 0}
+.hidden{display:none}.empty{padding:28px;text-align:center;border:1px dashed var(--line);border-radius:12px;color:var(--muted)}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
+@media(max-width:650px){.layout{display:block}nav{width:100%;display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--line);padding:10px}nav button{white-space:nowrap;width:auto;margin:0 5px 0 0}main{padding:18px}header{padding:15px 18px}}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo">ANTONI<span>.PL</span></div>
-  <small>MINECRAFT HOSTING · DEMO</small>
-</header>
+<header><div class="logo">Antoni<span>.pl</span></div><small>Prywatny panel Minecraft</small></header>
 <div class="layout">
 <nav>
-  <button class="active" data-page="home">⌂ Przegląd</button>
-  <button data-page="servers">▦ Moje serwery</button>
-  <button data-page="console">⌘ Konsola</button>
-  <button data-page="files">▤ Pliki i pluginy</button>
-  <button data-page="list">◎ Lista serwerów</button>
+<button class="active" data-page="overview">Przegląd</button>
+<button data-page="servers">Moje serwery</button>
+<button data-page="create">Utwórz serwer</button>
+<button data-page="account">Konto i dostęp</button>
 </nav>
 <main>
-<section id="home">
-  <h1>Twój serwer. Twoje zasady.</h1>
-  <p>Witaj w panelu Antoni.pl.</p>
-  <div class="notice">To wersja demonstracyjna. Nie steruje jeszcze prawdziwym serwerem Minecraft.</div>
-  <div class="grid">
-    <div class="card">Moje serwery<div class="value">1</div><p>Projekt testowy</p></div>
-    <div class="card">Status<div class="value">DEMO</div><p>Brak połączenia z hostem</p></div>
-    <div class="card">Gracze online<div class="value">—</div><p>Brak danych na żywo</p></div>
-  </div>
-  <div class="card">
-    <h2>Survival Antoni</h2>
-    <p>Minecraft Java · najnowsza wersja po konfiguracji</p>
-    <p>Adres: <strong>do skonfigurowania</strong></p>
-    <button class="action" onclick="go('servers')">Zarządzaj serwerem</button>
-  </div>
-</section>
-<section id="servers" hidden>
-  <h1>Moje serwery</h1>
-  <div class="card">
-    <h2>Survival Antoni</h2>
-    <p>Status: demonstracyjny</p>
-    <label>Rodzaj kont:</label><br><br>
-    <select id="mode">
-      <option value="premium">Premium — weryfikacja kont</option>
-      <option value="nonpremium">Non-premium — wymaga dodatkowych zabezpieczeń</option>
-    </select>
-    <p id="modeinfo">Zalecana standardowa weryfikacja kont Minecraft.</p>
-    <button class="action" onclick="alert('Połącz backend, aby uruchamiać serwer.')">Uruchom</button>
-    <button class="secondary" onclick="alert('Brak podłączonego serwera.')">Zatrzymaj</button>
-  </div>
-</section>
-<section id="console" hidden>
-  <h1>Konsola</h1>
-  <div class="card">
-    <div class="terminal" id="logs">
-      <div class="green">[Antoni.pl] Panel uruchomiony.</div>
-      <div>[INFO] Tryb demonstracyjny.</div>
-      <div>[INFO] Brak połączenia z serwerem Minecraft.</div>
-    </div>
-    <form id="commandform">
-      <p>Przykładowe polecenie — nie zostanie wykonane w grze.</p>
-      <input id="command" placeholder="Wpisz polecenie..." required>
-      <button class="action">Wyślij</button>
-    </form>
-  </div>
-</section>
-<section id="files" hidden>
-  <h1>Pliki i pluginy</h1>
-  <div class="card">
-    <p>Przykładowe pliki — nie są pobierane z prawdziwego serwera.</p>
-    <p>📁 plugins/</p><p>📁 world/</p>
-    <p>📄 server.properties</p><p>📄 eula.txt</p>
-    <button class="action" onclick="alert('Menedżer plików wymaga bezpiecznego backendu.')">Dodaj plugin</button>
-  </div>
-</section>
-<section id="list" hidden>
-  <h1>Lista serwerów</h1>
-  <input id="search" placeholder="Szukaj serwera..." oninput="filterServers()">
-  <div id="serverlist">
-    <div class="card entry"><h2>Survival Antoni</h2><p>Java · Survival · adres do skonfigurowania</p></div>
-    <div class="card entry"><h2>Anarchia Demo</h2><p>Java · Anarchia · przykład</p></div>
-  </div>
-  <p>Wpisy przykładowe — nie oznaczają działających serwerów.</p>
-</section>
-</main>
+<section id="overview">
+<div class="topline"><div><h1>Witaj w Antoni.pl</h1><p>Prywatny panel dla Ciebie i sześciu kolegów.</p></div><span class="badge">Maks. 2 serwery na osobę</span></div>
+<div class="grid">
+<div class="card"><div class="muted">Twoje serwery</div><div class="stat" id="serverCount">0 / 2</div></div>
+<div class="card"><div class="muted">Wersja gry</div><div class="stat" style="font-size:21px">Java 1.21.11</div></div>
+<div class="card"><div class="muted">Dostęp</div><div class="stat" style="font-size:21px">Prywatny</div></div>
 </div>
-<footer>© 2026 Antoni.pl · Minecraft Hosting</footer>
+<div class="notice"><b>Ważne:</b> To jest gotowy interfejs panelu. Tworzenie prawdziwych serwerów, konsola i uruchamianie wymagają podłączenia bezpiecznego backendu oraz maszyny hostingowej. Ten plik sam nie uruchamia Minecrafta.</div>
+<div class="card"><h2>Szybki start</h2><p>Utwórz serwer, wpisz jego nazwę i wybierz wersję. Na tym etapie zobaczysz serwer demonstracyjny w panelu.</p><button class="primary" onclick="showPage('create')">＋ Utwórz serwer</button></div>
+</section>
+<section id="servers" class="hidden">
+<div class="topline"><div><h1>Moje serwery</h1><p>Możesz mieć maksymalnie dwa serwery.</p></div><button class="primary" onclick="showPage('create')">＋ Utwórz serwer</button></div>
+<div id="serverList" class="grid"><div class="empty">Nie masz jeszcze serwerów. Utwórz pierwszy!</div></div>
+</section>
+<section id="create" class="hidden">
+<h1>Utwórz serwer Minecraft</h1><p>Wypełnij dane swojego serwera.</p>
+<div class="card" style="max-width:560px">
+<label for="serverName">Nazwa serwera</label><input id="serverName" maxlength="24" placeholder="np. anarchia.gg">
+<label for="worldName">Nazwa świata</label><input id="worldName" maxlength="24" placeholder="np. survival">
+<label for="version">Silnik i wersja</label><select id="version"><option>Paper 1.21.11</option><option>Vanilla 1.21.11</option></select>
+<button class="primary" id="createBtn" onclick="createServer()">Utwórz serwer</button>
+<p id="createMessage" class="muted"></p>
+</div>
+</section>
+<section id="account" class="hidden">
+<h1>Konto i dostęp</h1><div class="card"><p><b>Plan:</b> prywatna grupa</p><p><b>Użytkownicy:</b> właściciel + 6 zaproszonych kolegów</p><p><b>Limit:</b> 2 serwery na konto (łącznie maksymalnie 14)</p><div class="notice">Logowanie, zaproszenia i uprawnienia muszą być obsługiwane przez backend. Nie wpisuj haseł ani tokenów do tego pliku HTML.</div></div>
+</section>
+</main></div>
+<footer>Antoni.pl · Panel demonstracyjny · Minecraft Java</footer>
 <script>
-function go(page){
- document.querySelectorAll('main section').forEach(s=>s.hidden=s.id!==page);
- document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
-}
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>go(b.dataset.page));
-document.querySelector('#mode').onchange=e=>{
- document.querySelector('#modeinfo').textContent=e.target.value==='premium'
- ?'Konta są weryfikowane przez oficjalne uwierzytelnianie Minecraft.'
- :'Tryb wymaga zabezpieczenia tożsamości graczy, np. odpowiedniego systemu logowania.';
-};
-document.querySelector('#commandform').onsubmit=e=>{
- e.preventDefault();
- const logs=document.querySelector('#logs');
- const line=document.createElement('div');
- line.textContent='> '+document.querySelector('#command').value;
- logs.appendChild(line);
- const warning=document.createElement('div');
- warning.className='green';
- warning.textContent='DEMO: polecenie nie zostało wykonane.';
- logs.appendChild(warning);
- document.querySelector('#command').value='';
-};
-function filterServers(){
- const q=document.querySelector('#search').value.toLowerCase();
- document.querySelectorAll('.entry').forEach(e=>{
- e.hidden=!e.textContent.toLowerCase().includes(q);
- });
-}
+let servers=[];
+function showPage(page){document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));document.getElementById(page).classList.remove('hidden');document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
+function update(){document.getElementById('serverCount').textContent=servers.length+' / 2';let list=document.getElementById('serverList');if(!servers.length){list.innerHTML='<div class="empty">Nie masz jeszcze serwerów. Utwórz pierwszy!</div>';return;}list.innerHTML=servers.map((s,i)=>`<div class="card"><div class="server"><div><h2>${escapeHtml(s.name)}</h2><span class="badge">Demo · ${escapeHtml(s.version)}</span><p>Świat: ${escapeHtml(s.world)}</p><p id="status${i}">Status: Nieuruchomiony</p></div><div class="actions"><button onclick="demoStatus(${i},'Uruchamianie (demo)')">Start</button><button onclick="demoStatus(${i},'Zatrzymany (demo)')">Stop</button><button onclick="alert('Konsola będzie dostępna po podłączeniu backendu.')">Konsola</button><button onclick="alert('Menedżer plików będzie dostępny po podłączeniu backendu.')">Pliki</button></div></div></div>`).join('');}
+function escapeHtml(v){return v.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function createServer(){let name=document.getElementById('serverName').value.trim(),world=document.getElementById('worldName').value.trim(),version=document.getElementById('version').value,msg=document.getElementById('createMessage');if(!name||!world){msg.textContent='Wpisz nazwę serwera i świata.';return;}if(servers.length>=2){msg.textContent='Osiągnięto limit 2 serwerów na konto.';return;}servers.push({name,world,version});document.getElementById('serverName').value='';document.getElementById('worldName').value='';msg.textContent='Dodano serwer demonstracyjny do panelu. Nie został jeszcze uruchomiony w Minecraft.';update();}
+function demoStatus(i,status){document.getElementById('status'+i).textContent='Status: '+status;}
+update();
 </script>
 </body>
 </html>
-,
